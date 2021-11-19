@@ -15,9 +15,9 @@ describe('(2) Prueba a "DataService"', () => {
   });
 
   it(`Revisar generación de numeros`, () => {
-    const [numberA, numberB] = service.generateNumbers() //TODO: [1,2]
+    const [numberA, numberB] = service.generateNumbers() 
     const sum = numberA + numberB;
-    expect(sum).toMatch(/\d{1,}/) //TODO: Resultado sea number
+    expect(sum).toMatch(/\d{1,}/) 
   })
 
   it(`Revisar operacion matematica`, () => {

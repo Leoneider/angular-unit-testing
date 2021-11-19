@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
   }
 
   sendLogin(): void {
-    const [numberA, numberB] = this.checkHuman; //TODO: [1,2]
+    const [numberA, numberB] = this.checkHuman; 
     const result = this.form.value.result
     const check = this.dataService.checkOperation(numberA, numberB, result)
     if (!check) {
@@ -49,7 +49,7 @@ export class AppComponent implements OnInit {
     const password = this.form.value.password;
 
     this.authService.login(email, password)
-      .subscribe(res => this.dataSession = res, //TODO: Objecto usuario 
+      .subscribe(res => this.dataSession = res, 
         (err: any) => this.isCheck = 'ERROR_USER')
   }
 }

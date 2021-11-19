@@ -14,7 +14,7 @@ describe(`(1) TEST del componente "AppComponent"`, () => {
       imports: [
         ReactiveFormsModule,
         FormsModule,
-        HttpClientTestingModule//TODO: <-----
+        HttpClientTestingModule // Para realizar pruebas al HttpClient
       ],
       declarations: [
         AppComponent
@@ -23,23 +23,21 @@ describe(`(1) TEST del componente "AppComponent"`, () => {
 
   });
 
-  //TODO:Aislado! 
   it('Debe de existir el AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance
-    expect(app).toBeTruthy(); //TODO: ✔
+    expect(app).toBeTruthy(); 
   });
 
-  //TODO:Aislado! 
   it('Debe retornar formulario invalido', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance
-    fixture.detectChanges() //TODO: <---------------
+    const app = fixture.componentInstance   // Instancia del componente
+    fixture.detectChanges() // Necesitamos detectar cambios por que asignamos variables ejm: El formulario en el ngOnInit
 
-    const email = app.form.controls['email']
-    email.setValue('leifer33@gmail.com')
+    const email = app.form.controls['email'];   
+    email.setValue('leifer33@gmail.com');
 
-    expect(app.form.invalid).toBeTrue(); //TODO: ✔
+    expect(app.form.invalid).toBeTrue(); 
   });
 
   it('Debe retornar formulario valido', () => {
@@ -59,22 +57,25 @@ describe(`(1) TEST del componente "AppComponent"`, () => {
     expect(app.form.invalid).toBeFalse(); //TODO: ✔
   });
 
-  //TODO:Aislado!
-  // it(`Debe de actulizar datos de usuario`, () => {
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   const app = fixture.componentInstance;
-  //   fixture.detectChanges()
+  xit(`Debe de actulizar datos de usuario`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    fixture.detectChanges()
 
-  //   let email = app.form.controls['email']
-  //   let password = app.form.controls['password']
+    let email = app.form.controls['email']
+    let password = app.form.controls['password']
 
-  //   email.setValue('leifer33@gmail.com')
-  //   password.setValue('123456')
+    email.setValue('leifer33@gmail.com')
+    password.setValue('123456')
 
-  //   const btnElement = fixture.debugElement.query(By.css('button.btn'))
-  //   btnElement.nativeElement.click()
-  //   const testData = { user: 1 }
-  //   expect(app.isCheck).toEqual(testData)
-  // });
+    const btnElement = fixture.debugElement.query(By.css('button.btn'))
+    btnElement.nativeElement.click()
+    const testData = { user: 1 }
+
+    console.log("CHECK", app.isCheck);
+    console.log("DATA", app.dataSession);
+    
+    expect(app.isCheck).toEqual(testData)
+  });
 
 });
